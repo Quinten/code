@@ -8,8 +8,15 @@
     </head>
     <body>
         <script>
-            require(['require-module'], function (requireModule) {
-                console.log(requireModule());
+            require([
+                'require-module',
+                'require-moduletwo'
+            ], function (
+                requireModule,
+                requireModuleTwo
+            ) {
+                requireModule();
+                requireModuleTwo();
             });
         </script>
     </body>
