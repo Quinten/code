@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>studiosprite</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="require.js"></script>
+    </head>
+    <body>
+        <script>
+            require([
+                'StudioEmma_SpriteAnimation/js/objects/filledrectangle'
+            ], function (
+                rectangle
+            ) {
+                rectangle.create({x: 100, y: 100});
+            });
+        </script>
+    </body>
+</html>

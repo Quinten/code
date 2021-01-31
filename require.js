@@ -22,6 +22,19 @@
         callback.paths.forEach(function (path) {
             args.push(modules[path]);
         });
+        if (args.some(function (element) {
+            return element === false;
+        })) {
+            callbacks.push(callback);
+            return;
+        }
+        if (args.some(function (element) {
+            return element === undefined;
+        })) {
+            callbacks.push(callback);
+            processPathQueue();
+            return;
+        }
         callback.callback(...args);
         processPathQueue();
     }
@@ -47,10 +60,12 @@
                 if (typeof args[0] === 'function') {
                     modules[path] = args[0]();
                     processCallbacks();
+                    //processPathQueue();
                 } else if (Array.isArray(args[0])) {
                     var module = args[1];
                     require(args[0], function (...args) {
                         modules[path] = module(...args);
+                        //processPathQueue();
                     });
                 }
             }
